@@ -45,6 +45,8 @@
       <EntityTypeMapping TypeName="alquilervehiculosModel.vehiculos">
         <MappingFragment StoreEntitySet="vehiculos">
           <ScalarProperty Name="Disponibilidad" ColumnName="Disponibilidad" />
+          <ScalarProperty Name="placa" ColumnName="placa" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
           <ScalarProperty Name="Tipo" ColumnName="Tipo" />
           <ScalarProperty Name="Anio" ColumnName="Anio" />
           <ScalarProperty Name="Modelo" ColumnName="Modelo" />

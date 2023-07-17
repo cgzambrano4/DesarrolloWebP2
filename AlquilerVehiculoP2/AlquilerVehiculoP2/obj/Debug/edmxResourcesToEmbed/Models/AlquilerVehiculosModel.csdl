@@ -63,7 +63,9 @@
     <Property Name="Modelo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Anio" Type="Int32" Nullable="false" />
     <Property Name="Tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Disponibilidad" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Disponibilidad" Type="Boolean" />
     <NavigationProperty Name="facturas" Relationship="alquilervehiculosModel.FK_Factura_Vehiculos" FromRole="vehiculos" ToRole="facturas" />
   </EntityType>
   <Association Name="FK_Factura_Empleados">

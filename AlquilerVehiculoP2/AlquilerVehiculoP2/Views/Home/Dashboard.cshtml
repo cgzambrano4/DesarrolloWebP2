@@ -29,8 +29,15 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Cédula</th>
+                        <th>Cliente</th>
+                        <th>Vehículo</th>
+                        <th>Modelo</th>
+                        <th>Placa</th>
+                        <th>Foto</th>
+                        <th>Fecha de alquiler</th>
+                        <th>Fecha de devolución</th>
+                        <th>Atendido por</th>
+                        <th>Total del alquiler</th>
                         <!-- Agrega más columnas según tus necesidades -->
                     </tr>
                 </thead>
@@ -39,7 +46,14 @@
                     {
                         <tr>
                             <td>@factura.NombreCliente</td>
-                            <td>@factura.CedulaCliente</td>
+                            <td>@factura.vehiculos.Marca</td>
+                            <td>@factura.vehiculos.Modelo</td>
+                            <td>@factura.vehiculos.placa</td>
+                            <td>@factura.vehiculos.foto</td>
+                            <td>@factura.FechaAlquiler</td>
+                            <td>@factura.FechaDevolucion</td>
+                            <td>@factura.empleados.Nombres, @factura.empleados.Apellidos</td>
+                            <td>@factura.TotalAlquiler</td>
                             <!-- Agrega más columnas según tus necesidades -->
                         </tr>
                     }

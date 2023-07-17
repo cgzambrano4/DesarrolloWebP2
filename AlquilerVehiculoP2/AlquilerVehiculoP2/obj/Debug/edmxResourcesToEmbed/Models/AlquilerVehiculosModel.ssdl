@@ -46,7 +46,9 @@
     <Property Name="Modelo" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Anio" Type="int" Nullable="false" />
     <Property Name="Tipo" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="Disponibilidad" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="foto" Type="text" />
+    <Property Name="placa" Type="varchar" MaxLength="10" />
+    <Property Name="Disponibilidad" Type="bit" />
   </EntityType>
   <Association Name="FK_Factura_Empleados">
     <End Role="empleados" Type="Self.empleados" Multiplicity="1">
