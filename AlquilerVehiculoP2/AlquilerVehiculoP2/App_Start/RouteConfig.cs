@@ -16,8 +16,23 @@ namespace AlquilerVehiculoP2
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
+
+            //Agregado
+            routes.MapRoute(
+                name: "AccessDenied",
+                url: "AccessDenied",
+                defaults: new { controller = "Error", action = "AccessDenied" }
+            );
+
+            //Agregado
+            routes.MapRoute(
+                name: "Dashboard",
+                url: "Dashboard",
+                defaults: new { controller = "Home", action = "Dashboard" }
+            );
+
         }
     }
 }

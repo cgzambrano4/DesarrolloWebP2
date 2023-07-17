@@ -1,0 +1,41 @@
+﻿@model List<AlquilerVehiculoP2.Models.facturas>
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<div>
+    <!-- Aquí puedes agregar las opciones del dashboard para cada una de tus tablas -->
+    <ul>
+        <li>@Html.ActionLink("Empleados", "Index", "Empleados")</li>
+        <li>@Html.ActionLink("Vehículos", "Index", "Vehiculos")</li>
+        <li>@Html.ActionLink("Facturas", "Index", "Facturas")</li>
+        <!-- Agrega más opciones según tus tablas -->
+    </ul>
+</div>
+
+<div>
+    <!-- Aquí puedes mostrar los datos de las facturas -->
+    <h3>Alquileres</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Cédula</th>
+                <!-- Agrega más columnas según tus necesidades -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var factura in Model)
+            {
+                <tr>
+                    <td>@factura.NombreCliente</td>
+                    <td>@factura.CedulaCliente</td>
+                    <!-- Agrega más columnas según tus necesidades -->
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

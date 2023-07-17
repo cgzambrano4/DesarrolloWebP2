@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="alquilervehiculosModelStoreContainer" CdmEntityContainer="alquilervehiculosEntities">
+    <EntitySetMapping Name="empleados">
+      <EntityTypeMapping TypeName="alquilervehiculosModel.empleados">
+        <MappingFragment StoreEntitySet="empleados">
+          <ScalarProperty Name="FechaContrato" ColumnName="FechaContrato" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Id_Empleados" ColumnName="Id_Empleados" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facturas">
+      <EntityTypeMapping TypeName="alquilervehiculosModel.facturas">
+        <MappingFragment StoreEntitySet="facturas">
+          <ScalarProperty Name="TotalAlquiler" ColumnName="TotalAlquiler" />
+          <ScalarProperty Name="AbonoAlquiler" ColumnName="AbonoAlquiler" />
+          <ScalarProperty Name="PrecioAlquilerDia" ColumnName="PrecioAlquilerDia" />
+          <ScalarProperty Name="FechaDevolucion" ColumnName="FechaDevolucion" />
+          <ScalarProperty Name="FechaAlquiler" ColumnName="FechaAlquiler" />
+          <ScalarProperty Name="TelefonoCliente" ColumnName="TelefonoCliente" />
+          <ScalarProperty Name="DireccionCliente" ColumnName="DireccionCliente" />
+          <ScalarProperty Name="CedulaCliente" ColumnName="CedulaCliente" />
+          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+          <ScalarProperty Name="Id_Vehiculos" ColumnName="Id_Vehiculos" />
+          <ScalarProperty Name="Id_Empleados" ColumnName="Id_Empleados" />
+          <ScalarProperty Name="Id_Facturas" ColumnName="Id_Facturas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="alquilervehiculosModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vehiculos">
+      <EntityTypeMapping TypeName="alquilervehiculosModel.vehiculos">
+        <MappingFragment StoreEntitySet="vehiculos">
+          <ScalarProperty Name="Disponibilidad" ColumnName="Disponibilidad" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Id_Vehiculos" ColumnName="Id_Vehiculos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

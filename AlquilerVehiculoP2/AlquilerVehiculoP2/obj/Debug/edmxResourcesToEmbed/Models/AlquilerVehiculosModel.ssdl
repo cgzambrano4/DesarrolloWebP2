@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="alquilervehiculosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="empleados">
+    <Key>
+      <PropertyRef Name="Id_Empleados" />
+    </Key>
+    <Property Name="Id_Empleados" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CorreoElectronico" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FechaContrato" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="facturas">
+    <Key>
+      <PropertyRef Name="Id_Facturas" />
+    </Key>
+    <Property Name="Id_Facturas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Empleados" Type="int" Nullable="false" />
+    <Property Name="Id_Vehiculos" Type="int" Nullable="false" />
+    <Property Name="NombreCliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CedulaCliente" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="DireccionCliente" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="TelefonoCliente" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="FechaAlquiler" Type="date" Nullable="false" />
+    <Property Name="FechaDevolucion" Type="date" Nullable="false" />
+    <Property Name="PrecioAlquilerDia" Type="float" Nullable="false" />
+    <Property Name="AbonoAlquiler" Type="float" Nullable="false" />
+    <Property Name="TotalAlquiler" Type="float" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vehiculos">
+    <Key>
+      <PropertyRef Name="Id_Vehiculos" />
+    </Key>
+    <Property Name="Id_Vehiculos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Marca" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Modelo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Disponibilidad" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Factura_Empleados">
+    <End Role="empleados" Type="Self.empleados" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="facturas" Type="Self.facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleados">
+        <PropertyRef Name="Id_Empleados" />
+      </Principal>
+      <Dependent Role="facturas">
+        <PropertyRef Name="Id_Empleados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Vehiculos">
+    <End Role="vehiculos" Type="Self.vehiculos" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="facturas" Type="Self.facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehiculos">
+        <PropertyRef Name="Id_Vehiculos" />
+      </Principal>
+      <Dependent Role="facturas">
+        <PropertyRef Name="Id_Vehiculos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="alquilervehiculosModelStoreContainer">
+    <EntitySet Name="empleados" EntityType="Self.empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="facturas" EntityType="Self.facturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vehiculos" EntityType="Self.vehiculos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Factura_Empleados" Association="Self.FK_Factura_Empleados">
+      <End Role="empleados" EntitySet="empleados" />
+      <End Role="facturas" EntitySet="facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Vehiculos" Association="Self.FK_Factura_Vehiculos">
+      <End Role="vehiculos" EntitySet="vehiculos" />
+      <End Role="facturas" EntitySet="facturas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

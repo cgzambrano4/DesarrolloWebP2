@@ -17,5 +17,16 @@ namespace AlquilerVehiculoP2
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        //Agreagdo
+        protected void Application_EndRequest()
+        {
+            if (Response.StatusCode == 401)
+            {
+                Response.ClearContent();
+                Response.RedirectToRoute("AccessDenied");
+            }
+        }
+
     }
 }

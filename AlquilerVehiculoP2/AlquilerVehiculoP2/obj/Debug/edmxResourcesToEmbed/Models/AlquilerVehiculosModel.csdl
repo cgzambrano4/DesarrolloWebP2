@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="alquilervehiculosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="alquilervehiculosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="empleados" EntityType="alquilervehiculosModel.empleados" />
+    <EntitySet Name="facturas" EntityType="alquilervehiculosModel.facturas" />
+    <EntitySet Name="usuarios" EntityType="alquilervehiculosModel.usuarios" />
+    <EntitySet Name="vehiculos" EntityType="alquilervehiculosModel.vehiculos" />
+    <AssociationSet Name="FK_Factura_Empleados" Association="alquilervehiculosModel.FK_Factura_Empleados">
+      <End Role="empleados" EntitySet="empleados" />
+      <End Role="facturas" EntitySet="facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Vehiculos" Association="alquilervehiculosModel.FK_Factura_Vehiculos">
+      <End Role="vehiculos" EntitySet="vehiculos" />
+      <End Role="facturas" EntitySet="facturas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="empleados">
+    <Key>
+      <PropertyRef Name="Id_Empleados" />
+    </Key>
+    <Property Name="Id_Empleados" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaContrato" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="facturas" Relationship="alquilervehiculosModel.FK_Factura_Empleados" FromRole="empleados" ToRole="facturas" />
+  </EntityType>
+  <EntityType Name="facturas">
+    <Key>
+      <PropertyRef Name="Id_Facturas" />
+    </Key>
+    <Property Name="Id_Facturas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Empleados" Type="Int32" Nullable="false" />
+    <Property Name="Id_Vehiculos" Type="Int32" Nullable="false" />
+    <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CedulaCliente" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DireccionCliente" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoCliente" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FechaAlquiler" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaDevolucion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PrecioAlquilerDia" Type="Double" Nullable="false" />
+    <Property Name="AbonoAlquiler" Type="Double" Nullable="false" />
+    <Property Name="TotalAlquiler" Type="Double" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="empleados" Relationship="alquilervehiculosModel.FK_Factura_Empleados" FromRole="facturas" ToRole="empleados" />
+    <NavigationProperty Name="vehiculos" Relationship="alquilervehiculosModel.FK_Factura_Vehiculos" FromRole="facturas" ToRole="vehiculos" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vehiculos">
+    <Key>
+      <PropertyRef Name="Id_Vehiculos" />
+    </Key>
+    <Property Name="Id_Vehiculos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Marca" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Anio" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Disponibilidad" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="facturas" Relationship="alquilervehiculosModel.FK_Factura_Vehiculos" FromRole="vehiculos" ToRole="facturas" />
+  </EntityType>
+  <Association Name="FK_Factura_Empleados">
+    <End Type="alquilervehiculosModel.empleados" Role="empleados" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="alquilervehiculosModel.facturas" Role="facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleados">
+        <PropertyRef Name="Id_Empleados" />
+      </Principal>
+      <Dependent Role="facturas">
+        <PropertyRef Name="Id_Empleados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Vehiculos">
+    <End Type="alquilervehiculosModel.vehiculos" Role="vehiculos" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="alquilervehiculosModel.facturas" Role="facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehiculos">
+        <PropertyRef Name="Id_Vehiculos" />
+      </Principal>
+      <Dependent Role="facturas">
+        <PropertyRef Name="Id_Vehiculos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

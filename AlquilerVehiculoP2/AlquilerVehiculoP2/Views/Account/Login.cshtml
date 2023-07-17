@@ -1,0 +1,31 @@
+﻿<!--
+Como paso dos se creo la vista login del controlador Account, aqui se importa el modelo de la base
+    de datos
+-->
+
+@model AlquilerVehiculoP2.Models.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Iniciar Sesión";
+}
+
+<h2>Iniciar sesión</h2>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <div>
+        <label for="Username">Nombre de usuario:</label>
+        @Html.TextBoxFor(m => m.Username)
+        @Html.ValidationMessageFor(m => m.Username)
+    </div>
+
+    <div>
+        <label for="Password">Contraseña:</label>
+        @Html.PasswordFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+
+    <input type="submit" value="Iniciar sesión" />
+}
