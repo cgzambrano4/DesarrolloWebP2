@@ -28,6 +28,11 @@ namespace AlquilerVehiculoP2.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Dashboard", "Home");
+            }
+
             if (IsValidUser(username, password))
             {
                 FormsAuthentication.SetAuthCookie(username, false);

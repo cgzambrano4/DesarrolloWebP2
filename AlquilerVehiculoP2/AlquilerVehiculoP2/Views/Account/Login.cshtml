@@ -9,23 +9,35 @@ Como paso dos se creo la vista login del controlador Account, aqui se importa el
     ViewBag.Title = "Iniciar Sesión";
 }
 
-<h2>Iniciar sesión</h2>
+<!-- Enlaza el archivo CSS de Bootstrap -->
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
-@using (Html.BeginForm("Login", "Account", FormMethod.Post))
-{
-    @Html.ValidationSummary(true)
+<!-- Enlaza los archivos JavaScript de jQuery y Bootstrap -->
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 
-    <div>
-        <label for="Username">Nombre de usuario:</label>
-        @Html.TextBoxFor(m => m.Username)
-        @Html.ValidationMessageFor(m => m.Username)
-    </div>
 
-    <div>
-        <label for="Password">Contraseña:</label>
-        @Html.PasswordFor(m => m.Password)
-        @Html.ValidationMessageFor(m => m.Password)
-    </div>
+<div class="container">
+    <h2>Iniciar sesión</h2>
 
-    <input type="submit" value="Iniciar sesión" />
-}
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Username)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </div>
+    }
+</div>

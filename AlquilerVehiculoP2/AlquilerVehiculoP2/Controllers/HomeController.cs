@@ -10,11 +10,6 @@ namespace AlquilerVehiculoP2.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         //Agregado
         [Authorize] // Asegura que solo los usuarios autenticados puedan acceder al dashboard
         public ActionResult Dashboard()
@@ -37,6 +32,39 @@ namespace AlquilerVehiculoP2.Controllers
             }
         }
 
+        //Integrante1
+        [Authorize] // Asegura que solo los usuarios autenticados puedan acceder al dashboard
+        public ActionResult Empleados()
+        {
+            // Aqui completar, agregar la vista para los empleados
+
+            return View();
+        }
+
+        //Integrante2
+        [Authorize] // Asegura que solo los usuarios autenticados puedan acceder al dashboard
+        public ActionResult Vehiculos()
+        {
+            // Aqui completar, agregar la vista para los vehiculos
+
+            return View();
+        }
+
+        //Integrante3
+        [Authorize] // Asegura que solo los usuarios autenticados puedan acceder al dashboard
+        public ActionResult Facturas()
+        {
+            // Aqui completar, agregar la vista para las facturas
+
+            return View();
+        }
+
+
+        /*
+        public ActionResult Index()
+        {
+            return View();
+        }*/
 
         public ActionResult About()
         {
