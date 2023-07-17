@@ -10,36 +10,39 @@
 
 <h2>Dashboard</h2>
 
-<div>
-    <!-- Aquí puedes agregar las opciones del dashboard para cada una de tus tablas -->
-    <ul>
-        <li>@Html.ActionLink("Empleados", "Empleados", "Home")</li>
-        <li>@Html.ActionLink("Vehículos", "Vehiculos", "Home")</li>
-        <li>@Html.ActionLink("Facturas", "Facturas", "Home")</li>
-        <!-- Agrega más opciones según tus tablas -->
-    </ul>
-</div>
+<div class="container">
+    <div class="row">
 
-<div>
-    <!-- Aquí puedes mostrar los datos de las facturas -->
-    <h3>Alquileres</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Cédula</th>
-                <!-- Agrega más columnas según tus necesidades -->
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var factura in Model)
-            {
-                <tr>
-                    <td>@factura.NombreCliente</td>
-                    <td>@factura.CedulaCliente</td>
-                    <!-- Agrega más columnas según tus necesidades -->
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        <div class="col-md-3">
+            <div class="list-group">
+                <!-- Opciones de navegación -->
+                @Html.ActionLink("Empleados", "Empleados", "Home")
+                @Html.ActionLink("Vehículos", "Vehiculos", "Home")
+                @Html.ActionLink("Facturas", "Facturas", "Home")
+                <!-- Agrega más opciones según tus tablas -->
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <!-- Aquí puedes mostrar los datos de las facturas -->
+            <h3>Alquileres</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cédula</th>
+                        <!-- Agrega más columnas según tus necesidades -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var factura in Model)
+                    {
+                        <tr>
+                            <td>@factura.NombreCliente</td>
+                            <td>@factura.CedulaCliente</td>
+                            <!-- Agrega más columnas según tus necesidades -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>

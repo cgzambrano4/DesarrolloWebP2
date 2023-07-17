@@ -17,27 +17,30 @@ Como paso dos se creo la vista login del controlador Account, aqui se importa el
 <script src="~/Scripts/bootstrap.min.js"></script>
 
 
-<div class="container">
-    <h2>Iniciar sesión</h2>
+<div class="container" style="min-height: 50vh;">
+    <h2 class="d-flex justify-content-center align-items-center" style="min-height: 0vh;">Iniciar sesión</h2>
 
-    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 25vh;">
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Username)
-            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Username)
-        </div>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password)
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Password)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Username, "Usuario")
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Username)
+            </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-        </div>
-    }
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, "Contraseña")
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+
+            <div class="form-group mt-3" style="margin-left:45px;">
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div>
+        }
+    </div>
 </div>
