@@ -51,9 +51,9 @@
           <Property Name="Modelo" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Anio" Type="int" Nullable="false" />
           <Property Name="Tipo" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="foto" Type="text" />
-          <Property Name="placa" Type="varchar" MaxLength="10" />
-          <Property Name="Disponibilidad" Type="bit" />
+          <Property Name="placa" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Disponibilidad" Type="bit" Nullable="false" />
+          <Property Name="img_cli" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK_Factura_Empleados">
           <End Role="empleados" Type="Self.empleados" Multiplicity="1">
@@ -164,9 +164,9 @@
           <Property Name="Modelo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Anio" Type="Int32" Nullable="false" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Disponibilidad" Type="Boolean" />
+          <Property Name="placa" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Disponibilidad" Type="Boolean" Nullable="false" />
+          <Property Name="img_cli" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="facturas" Relationship="alquilervehiculosModel.FK_Factura_Vehiculos" FromRole="vehiculos" ToRole="facturas" />
         </EntityType>
         <Association Name="FK_Factura_Empleados">
@@ -246,9 +246,9 @@
           <EntitySetMapping Name="vehiculos">
             <EntityTypeMapping TypeName="alquilervehiculosModel.vehiculos">
               <MappingFragment StoreEntitySet="vehiculos">
+                <ScalarProperty Name="img_cli" ColumnName="img_cli" />
                 <ScalarProperty Name="Disponibilidad" ColumnName="Disponibilidad" />
                 <ScalarProperty Name="placa" ColumnName="placa" />
-                <ScalarProperty Name="foto" ColumnName="foto" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Anio" ColumnName="Anio" />
                 <ScalarProperty Name="Modelo" ColumnName="Modelo" />

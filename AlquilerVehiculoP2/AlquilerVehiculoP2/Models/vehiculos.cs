@@ -25,9 +25,9 @@ namespace AlquilerVehiculoP2.Models
         public string Modelo { get; set; }
         public int Anio { get; set; }
         public string Tipo { get; set; }
-        public string foto { get; set; }
         public string placa { get; set; }
-        public Nullable<bool> Disponibilidad { get; set; }
+        public bool Disponibilidad { get; set; }
+        public string img_cli { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<facturas> facturas { get; set; }
