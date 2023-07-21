@@ -21,6 +21,7 @@ namespace AlquilerVehiculoP2.Models.ViewModels
         [Required]
         [Display(Name = "Cedula")]
         [StringLength(10)]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Ingrese solo números en el campo Cedula.")]
         public string CedulaCliente { get; set; }
 
         [Required]
@@ -31,6 +32,7 @@ namespace AlquilerVehiculoP2.Models.ViewModels
         [Required]
         [Display(Name = "Teléfono")]
         [StringLength(10)]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Ingrese solo números en el campo Telefono.")]
         public string TelefonoCliente { get; set; }
 
         [Required]
