@@ -25,7 +25,6 @@ namespace AlquilerVehiculoP2.Models
         public string Modelo { get; set; }
         public int Anio { get; set; }
         public string Tipo { get; set; }
-        public string placa { get; set; }
         public bool Disponibilidad { get; set; }
         public string img_cli { get; set; }
     

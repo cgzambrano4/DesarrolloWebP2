@@ -8,31 +8,35 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 
-<h2>Dashboard</h2>
+<style>
+    /* Estilo para hacer que el contenedor principal ocupe toda la pantalla */
+    html, body, .container {
+        height: 100%;
+    }
+</style>
 
-<div class="container">
-    <div class="row">
-
-        <div class="col-md-3">
+<div class="container h-100">
+    <div class="row h-100">
+        <div class="col-md-3 col-12 d-flex flex-column">
+            <h2 style="text-align:center;">Dashboard</h2>
             <div class="list-group">
                 <!-- Opciones de navegación -->
-                @Html.ActionLink("Empleados", "Empleados", "Home")
-                @Html.ActionLink("Vehículos", "Vehiculos", "Home")
-                @Html.ActionLink("Facturas", "Facturas", "Home")
+                @Html.ActionLink("Empleados", "Empleados", "Home", null, new { @class = "list-group-item list-group-item-action" })
+                @Html.ActionLink("Vehículos", "Vehiculos", "Home", null, new { @class = "list-group-item list-group-item-action" })
+                @Html.ActionLink("Facturas", "Facturas", "Home", null, new { @class = "list-group-item list-group-item-action" })
                 <!-- Agrega más opciones según tus tablas -->
             </div>
         </div>
 
-        <div class="table-responsive">
+        <div class="table-responsive col-md-9 col-12">
             <!-- Aquí puedes mostrar los datos de las facturas -->
-            <h3>Alquileres</h3>
+            <h3 style="text-align:center;">Alquileres</h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Cliente</th>
                         <th>Vehículo</th>
                         <th>Modelo</th>
-                        <th>Placa</th>
                         <th>Foto</th>
                         <th>Fecha de alquiler</th>
                         <th>Fecha de devolución</th>
@@ -47,9 +51,8 @@
                         <tr>
                             <td>@factura.NombreCliente</td>
                             <td>@factura.vehiculos.Marca</td>
-                            <td>@factura.vehiculos.Modelo</td>9
-                            <td>@factura.vehiculos.placa</td>
-                            <td>@factura.vehiculos.foto</td>
+                            <td>@factura.vehiculos.Modelo</td>
+                            <td>@factura.vehiculos.img_cli</td>
                             <td>@factura.FechaAlquiler</td>
                             <td>@factura.FechaDevolucion</td>
                             <td>@factura.empleados.Nombres, @factura.empleados.Apellidos</td>
@@ -60,3 +63,5 @@
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
