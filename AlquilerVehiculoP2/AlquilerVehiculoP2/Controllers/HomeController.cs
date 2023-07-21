@@ -10,7 +10,7 @@ namespace AlquilerVehiculoP2.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        //Agregado
+        //Agregado César
         [Authorize] // Asegura que solo los usuarios autenticados puedan acceder al dashboard
         public ActionResult Dashboard()
         {

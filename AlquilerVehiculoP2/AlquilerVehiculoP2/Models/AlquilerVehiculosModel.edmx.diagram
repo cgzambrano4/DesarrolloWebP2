@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ac3240c96d674a29aa7dc8c9fd6c0794" Name="Diagram1">
-        <EntityTypeShape EntityType="alquilervehiculosModel.empleados" Width="1.5" PointX="0.5" PointY="0.75" />
+        <EntityTypeShape EntityType="alquilervehiculosModel.empleados" Width="1.5" PointX="5.875" PointY="0.5" />
         <EntityTypeShape EntityType="alquilervehiculosModel.facturas" Width="1.5" PointX="3.25" PointY="0.5" />
-        <EntityTypeShape EntityType="alquilervehiculosModel.usuarios" Width="1.5" PointX="8" PointY="0.875" />
-        <EntityTypeShape EntityType="alquilervehiculosModel.vehiculos" Width="1.5" PointX="5.875" PointY="0.75" />
+        <EntityTypeShape EntityType="alquilervehiculosModel.usuarios" Width="1.5" PointX="8" PointY="0.5" />
+        <EntityTypeShape EntityType="alquilervehiculosModel.vehiculos" Width="1.5" PointX="0.5" PointY="0.5" />
         <AssociationConnector Association="alquilervehiculosModel.FK_Factura_Empleados" />
         <AssociationConnector Association="alquilervehiculosModel.FK_Factura_Vehiculos" />
       </Diagram>

@@ -1,0 +1,99 @@
+﻿@model AlquilerVehiculoP2.Models.ViewModels.NuevaFacturaViewModel
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<head>
+    <!-- Optional: Font Awesome for icons (you can omit this if you don't need icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/Site.css">
+</head>
+<h2 class="text-center">Factura de Alquiler</h2>
+
+<!--paso 8.1 - Creación el formulario-->
+@using (Html.BeginForm("Nuevo", "Factura", FormMethod.Post, new { @class = "form-factura" }))
+{
+    <div class="container mt-4">
+        <div class="row ">
+            <div class="col-md-6">
+                <h4 class="text-warning">Datos del Cliente</h4>
+                <div class="form-group input-group">
+                    @Html.LabelFor(d => d.FacturaModel.NombreCliente)
+                    @Html.TextBoxFor(d => d.FacturaModel.NombreCliente, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.FacturaModel.NombreCliente)
+                </div>
+
+                <div class="form-group input-group">
+                    @Html.LabelFor(d => d.FacturaModel.CedulaCliente)
+                    @Html.TextBoxFor(d => d.FacturaModel.CedulaCliente, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.FacturaModel.CedulaCliente)
+                </div>
+
+                <div class="form-group input-group">
+                    @Html.LabelFor(d => d.FacturaModel.DireccionCliente)
+                    @Html.TextBoxFor(d => d.FacturaModel.DireccionCliente, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.FacturaModel.DireccionCliente)
+                </div>
+
+                <div class="form-group input-group">
+                    @Html.LabelFor(d => d.FacturaModel.TelefonoCliente)
+                    @Html.TextBoxFor(d => d.FacturaModel.TelefonoCliente, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.FacturaModel.TelefonoCliente)
+                </div>
+            </div>
+
+            <div class="col-md-6 ">
+                <h4 class="text-warning">Datos del alquiler</h4>
+                <div class="form-group input-group">
+                    @Html.LabelFor(d => d.FacturaModel.PrecioAlquilerDia)
+                    @Html.TextBoxFor(d => d.FacturaModel.PrecioAlquilerDia, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.FacturaModel.PrecioAlquilerDia)
+                </div>
+
+                <div class="form-group input-group">
+                    @Html.LabelFor(d => d.FacturaModel.AbonoAlquiler)
+                    @Html.TextBoxFor(d => d.FacturaModel.AbonoAlquiler, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.FacturaModel.AbonoAlquiler)
+                </div>
+
+                <div class="form-group input-group">
+                    @Html.Label("Vehiculo")
+                    <input type="text" class="form-control" value="@Model.MarcaVehiculoSeleccionado" disabled="disabled" />
+                    @Html.ValidationMessageFor(d => d.FacturaModel.Id_Vehiculos)
+                </div>
+
+                <div class="form-group input-group">
+                    @Html.Label("Empleado")
+                    @Html.DropDownListFor(d => d.FacturaModel.Id_Empleados, Model.SelectListEmpleados, "Seleccione un cliente", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.FacturaModel.Id_Empleados)
+                </div>
+
+                <div class="form-group input-group">
+                    <div class="col-md-6">
+                        @Html.LabelFor(d => d.FacturaModel.FechaAlquiler)
+                        <br />
+                        @Html.EditorFor(d => d.FacturaModel.FechaAlquiler, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.FacturaModel.FechaAlquiler)
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(d => d.FacturaModel.FechaDevolucion)
+                        <br />
+                        @Html.EditorFor(d => d.FacturaModel.FechaDevolucion, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.FacturaModel.FechaDevolucion)
+                    </div>
+                </div>
+                @Html.HiddenFor(d => d.FacturaModel.Id_Vehiculos)
+
+            </div>
+
+            <div class="form-group text-center mt-4">
+                <input value="Guardar" class="btn btn-outline-dark" type="submit" />
+                <a href="~/Auto/VehiculosDisponibles" class="btn btn-outline-dark">Vehículos Disponibles</a>
+                <a href="~/Factura/Index" class="btn btn-outline-dark">Cancelar</a>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

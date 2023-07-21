@@ -10,7 +10,7 @@
     <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="CorreoElectronico" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="FechaContrato" Type="date" Nullable="false" />
+    <Property Name="FechaContrato" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="facturas">
     <Key>
@@ -46,9 +46,8 @@
     <Property Name="Modelo" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Anio" Type="int" Nullable="false" />
     <Property Name="Tipo" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="placa" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Disponibilidad" Type="bit" Nullable="false" />
     <Property Name="img_cli" Type="varchar(max)" />
+    <Property Name="Disponibilidad" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_Factura_Empleados">
     <End Role="empleados" Type="Self.empleados" Multiplicity="1">

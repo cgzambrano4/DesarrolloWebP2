@@ -1,0 +1,95 @@
+﻿@model AlquilerVehiculoP2.Models.ViewModels.FacturaViewModel
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editar</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Editar", "Factura", FormMethod.Post))
+        {
+            @Html.HiddenFor(d => d.Id_Facturas)
+            @Html.HiddenFor(d => d.Id_Vehiculos)
+            @Html.HiddenFor(d => d.Id_Empleados)
+
+            <div class="mt-3">
+                @Html.LabelFor(d => d.NombreCliente)
+                @Html.TextBoxFor(d => d.NombreCliente, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.NombreCliente, null)
+            </div>
+            <div class="mt-3">
+                @Html.LabelFor(d => d.CedulaCliente)
+                @Html.TextBoxFor(d => d.CedulaCliente, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.CedulaCliente, null) <br /><br />
+            </div>
+            <div class="mt-3">
+                @Html.LabelFor(d => d.DireccionCliente)
+                @Html.TextBoxFor(d => d.DireccionCliente, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.DireccionCliente, null) <br /><br />
+            </div>
+            <div class="mt-3">
+                @Html.LabelFor(d => d.TelefonoCliente)
+                @Html.TextBoxFor(d => d.TelefonoCliente, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.TelefonoCliente, null)
+                <br />
+                <br />
+            </div>
+            <div class="mt-3">
+                @Html.LabelFor(d => d.FechaAlquiler)
+                @Html.EditorFor(d => d.FechaAlquiler, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.FechaAlquiler, null)
+                <br />
+                <br />
+            </div>
+
+            <div class="mt-3">
+                @Html.LabelFor(d => d.FechaDevolucion)
+                @Html.EditorFor(d => d.FechaDevolucion, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.FechaDevolucion, null)
+                <br />
+                <br />
+            </div>
+            <div class="mt-3">
+                @Html.LabelFor(d => d.PrecioAlquilerDia)
+                @Html.TextBoxFor(d => d.PrecioAlquilerDia, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.PrecioAlquilerDia, null)
+                <br />
+                <br />
+            </div>
+            <div class="mt-3">
+                @Html.LabelFor(d => d.AbonoAlquiler)
+                @Html.TextBoxFor(d => d.AbonoAlquiler, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.AbonoAlquiler, null)
+                <br />
+                <br />
+            </div>
+            <div style="text-align:right;">
+                <input type="submit" class="btn btn-outline-dark" value="Guardar" />
+                <a href="~/Factura/Index" class="btn btn-outline-dark">Cancelar</a>
+            </div>
+
+        }
+
+    </div>
+</div>
+<script>
+    // Función para validar las fechas en el formulario antes de enviarlo
+    $(function () {
+        // Obtenemos las referencias a los campos de fecha de alquiler y fecha de devolución
+        var fechaAlquiler = $("#FacturaModel_FechaAlquiler");
+        var fechaDevolucion = $("#FacturaModel_FechaDevolucion");
+
+        // Función para verificar la validez de las fechas antes de enviar el formulario
+        $("form").submit(function () {
+            var fechaAlquilerValue = new Date(fechaAlquiler.val());
+            var fechaDevolucionValue = new Date(fechaDevolucion.val());
+
+            if (fechaDevolucionValue < fechaAlquilerValue) {
+                alert("La fecha de devolución no puede ser anterior a la fecha de alquiler.");
+                return false; // Evita que se envíe el formulario
+            }
+        });
+    });
+
+</script>

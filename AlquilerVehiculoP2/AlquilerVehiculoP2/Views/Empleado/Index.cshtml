@@ -1,0 +1,47 @@
+﻿
+@model List<AlquilerVehiculoP2.Models.ViewModels.ListEmpleadoViewModel>
+
+@{
+    ViewBag.Title = "Lista de empleados";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-12">
+        <a href="~/Empleado/Nuevo" class="btn btn-outline-dark">Nuevo</a>
+        <div class="table">
+            <table class="table" style="text-align:center;">
+                <thead style="background-color:mediumslateblue">
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Dirección</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th>Fecha Contrato</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var oElemento in Model)
+                    {
+                        <tr>
+                            <td>@oElemento.Nombres</td>
+                            <td>@oElemento.Apellidos</td>
+                            <td>@oElemento.Direccion</td>
+                            <td>@oElemento.Telefono</td>
+                            <td>@oElemento.CorreoElectronico</td>
+                            <td>@oElemento.FechaContrato</td>
+                            <td>
+                                <a href="@Url.Action("Editar","Empleado",new {id = oElemento.Id_Empleados})" class="btn btn-outline-dark">Editar</a>
+                                <a href="@Url.Action("Eliminar","Empleado",new {id = oElemento.Id_Empleados})" class="btn btn-outline-dark" onclick="return confirm('¿Estás seguro de que deseas eliminar este auto?')">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

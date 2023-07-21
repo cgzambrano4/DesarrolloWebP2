@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AlquilerVehiculoP2.Models.ViewModels.ListaAutoViewModel>
+
+@{
+    ViewBag.Title = "VehiculosDisponibles";
+}
+
+<h2>Vehiculos Disponibles</h2>
+
+@{
+    ViewBag.Title = "Vehículos Disponibles";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Asegúrate de ajustar el nombre del layout si es diferente
+
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<style>
+    .vehiculo-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        width: 250px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+        .vehiculo-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .vehiculo-card p {
+            margin-bottom: 5px;
+        }
+
+        .vehiculo-card a {
+            display: block;
+            margin-top: 10px;
+        }
+
+    .no-disponible {
+        color: red;
+        font-weight: bold;
+    }
+
+    .back-button {
+        margin-bottom: 20px;
+    }
+</style>
+
+@foreach (var vehiculo in Model)
+{
+    <div class="vehiculo-card">
+        <img src="@Url.Content(vehiculo.img_cli)" alt="@vehiculo.Modelo" width="50" height="50" />
+        <p><b>Marca:</b> @vehiculo.Marca</p>
+        <p><b>Modelo:</b> @vehiculo.Modelo</p>
+        <p><b>Año:</b> @vehiculo.Anio</p>
+        <p><b>Tipo:</b> @vehiculo.Tipo</p>
+        <p><b>Disponibilidad:</b> @vehiculo.Disponibilidad</p>
+        @if (vehiculo.Disponibilidad == "Disponible")
+        {
+            <a href="@Url.Action("Nuevo", "Factura", new { idVehiculo = vehiculo.Id_Vehiculos })" class="btn btn-outline-dark">Seleccionar</a>
+        }
+        else
+        {
+            <p class="no-disponible">Este vehículo no está disponible</p>
+        }
+    </div>
+}
+
+<div class="mt-3">
+    @Html.ActionLink("Atrás", "Index", "Auto", null, new { @class = "btn btn-outline-dark back-button" })
+</div>

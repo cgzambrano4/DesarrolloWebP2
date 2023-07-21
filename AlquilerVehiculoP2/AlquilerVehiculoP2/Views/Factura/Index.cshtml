@@ -1,0 +1,108 @@
+﻿@model List<AlquilerVehiculoP2.Models.ViewModels.ListaFacturaViewModel>
+@{
+    ViewBag.Title = "Index";
+    var count = 0;
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos para el contenedor de cada factura */
+        .factura-container {
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para la tabla que muestra cada factura */
+        .factura-table {
+            width: 100%;
+            background-color: #f9f9f9;
+            border: 1px solid #dcdcdc;
+            border-radius: 5px;
+        }
+
+        /* Estilos para las etiquetas de cada campo de la factura */
+        .factura-label {
+            width: 40%;
+            font-weight: bold;
+            text-align: start;
+            margin-left: 23px
+        }
+
+        /* Estilos para las opciones de cada factura */
+        .factura-options {
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<h2 class="text-center">Facturas</h2>
+
+<div class="row" style="text-align:left;padding:10px;">
+    <a href="@Url.Action("Nuevo", "Factura", new { idVehiculo = 1 })" class="btn btn-outline-dark">Nueva Factura</a>
+    <br />
+    <br />
+    <div class="text-center mt-4" style="width:100%">
+        @foreach (var factura in Model)
+        {
+            <div class="factura-container col-md-6">
+                <table class="table table-bordered factura-table">
+                    <tr>
+                        <th colspan="2">Factura @(++count)</th>
+                    </tr>
+                    <tr>
+                        <td class="factura-label">Cliente</td>
+                        <td>@factura.NombreCliente</td>
+                    </tr>
+                    <tr>
+                        <td class="factura-label">Cedula</td>
+                        <td>@factura.CedulaCliente</td>
+                    </tr>
+                    <!-- Resto de los campos de la factura -->
+                    <tr>
+                        <td class="factura-label">Fecha del Alquiler</td>
+                        <td>@factura.FechaAlquiler</td>
+                    </tr>
+                    <tr>
+                        <td class="factura-label">Fecha de devolucion</td>
+                        <td>@factura.FechaDevolucion</td>
+                    </tr>
+                    <tr>
+                        <td class="factura-label">Alquiler al dia</td>
+                        <td>@factura.PrecioAlquilerDia</td>
+                    </tr>
+                    <tr>
+                        <td class="factura-label">Abono del alquiler</td>
+                        <td>@factura.AbonoAlquiler</td>
+                    </tr>
+                    <tr>
+                        <td class="factura-label">Total valor del Alquiler</td>
+                        <td>@factura.TotalAlquiler</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="factura-options">
+                            <a href="@Url.Action("Editar", "Factura", new { id = factura.Id_Facturas })" class="btn btn-outline-dark"><i class="fas fa-edit"></i> Editar</a>
+                            <a data-toggle="modal" data-target="#cliente@(factura.Id_Facturas)" class="btn btn-outline-dark"> Eliminar <i class="fa-solid fa-user-minus"></i></a>
+                            <div id="cliente@(factura.Id_Facturas)" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div style=" background: lavender;" class="modal-content">
+                                        <div class="modal-header">
+                                        </div>
+                                        <div class="modal-body">
+                                            ¿Esta seguro que desea eliminar este cliente?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <a href="@Url.Action("Eliminar", "Factura", new {id=factura.Id_Facturas})" type="button" class="btn btn-primary" onclick="return confirm('¿Estás seguro de que deseas eliminar este auto?')">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal de eliminación -->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+    </div>
+</div>

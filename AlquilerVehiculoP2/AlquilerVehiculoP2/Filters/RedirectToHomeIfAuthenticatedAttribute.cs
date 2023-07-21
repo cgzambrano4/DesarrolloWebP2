@@ -15,6 +15,7 @@ namespace AlquilerVehiculoP2.Filters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (filterContext.HttpContext.User.Identity.IsAuthenticated)
+                //Agregado César - llama al metodo IsAuthenticated y si es verdadero se llama al dashboard
             {
                 filterContext.Result = new RedirectToRouteResult(
                     new System.Web.Routing.RouteValueDictionary {

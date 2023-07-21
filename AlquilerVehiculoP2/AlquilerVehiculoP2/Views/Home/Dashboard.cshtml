@@ -11,28 +11,28 @@
 <style>
     /* Estilo para hacer que el contenedor principal ocupe toda la pantalla */
     html, body, .container {
-        height: 100%;
+        height: 90%;
     }
 </style>
 
 <div class="container h-100">
     <div class="row h-100">
-        <div class="col-md-3 col-12 d-flex flex-column">
+        <div class="col-md-2 col-12 d-flex flex-column">
             <h2 style="text-align:center;">Dashboard</h2>
             <div class="list-group">
                 <!-- Opciones de navegación -->
-                @Html.ActionLink("Empleados", "Empleados", "Home", null, new { @class = "list-group-item list-group-item-action" })
-                @Html.ActionLink("Vehículos", "Vehiculos", "Home", null, new { @class = "list-group-item list-group-item-action" })
-                @Html.ActionLink("Facturas", "Facturas", "Home", null, new { @class = "list-group-item list-group-item-action" })
+                @Html.ActionLink("Empleados", "Index", "Empleado", null, new { @class = "list-group-item list-group-item-action" })
+                @Html.ActionLink("Vehículos", "Index", "Auto", null, new { @class = "list-group-item list-group-item-action" })
+                @Html.ActionLink("Facturas", "Index", "Factura", null, new { @class = "list-group-item list-group-item-action" })
                 <!-- Agrega más opciones según tus tablas -->
             </div>
         </div>
 
-        <div class="table-responsive col-md-9 col-12">
+        <div class="table-responsive col-md-10 col-12">
             <!-- Aquí puedes mostrar los datos de las facturas -->
             <h3 style="text-align:center;">Alquileres</h3>
             <table class="table table-striped">
-                <thead>
+                <thead style="background-color:mediumslateblue">
                     <tr>
                         <th>Cliente</th>
                         <th>Vehículo</th>
@@ -46,16 +46,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!--Agregado César - Recorre los registro de mi tabla y lo va mostrando-->
                     @foreach (var factura in Model)
                     {
                         <tr>
                             <td>@factura.NombreCliente</td>
-                            <td>@factura.vehiculos.Marca</td>
-                            <td>@factura.vehiculos.Modelo</td>
-                            <td>@factura.vehiculos.img_cli</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>@factura.FechaAlquiler</td>
                             <td>@factura.FechaDevolucion</td>
-                            <td>@factura.empleados.Nombres, @factura.empleados.Apellidos</td>
+                            <td></td>
                             <td>@factura.TotalAlquiler</td>
                             <!-- Agrega más columnas según tus necesidades -->
                         </tr>

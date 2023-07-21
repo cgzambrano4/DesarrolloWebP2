@@ -18,7 +18,7 @@ namespace AlquilerVehiculoP2
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        //Agreagdo
+        //Agreagdo César - si no esta autenticado e intenta acceder a una pagina, no podra acceder
         protected void Application_EndRequest()
         {
             if (Response.StatusCode == 401)

@@ -18,3 +18,19 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Estilos para el formulario de factura */
+.form-factura {
+    background-color: lavender; /* Color de fondo tipo "color factura" */
+    border: 2px solid #dcdcdc; /* Borde del formulario */
+    padding: 20px; /* Espacio interno del formulario */
+    border-radius: 5px; /* Borde redondeado */
+}
+
+    /* Estilos para los inputs */
+    .form-factura .form-control {
+        background-color: #f9f9f9; /* Color de fondo para los inputs */
+        border: 1px solid #dcdcdc; /* Borde de los inputs */
+        border-radius: 3px; /* Borde redondeado para los inputs */
+    }
+
